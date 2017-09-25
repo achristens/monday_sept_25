@@ -28,8 +28,20 @@ class Book
   def self.borrowed
     return @@on_loan
   end
+
+  def self.browse
+    @@on_shelf.sample
+  end
+
 end
 
 sister_outsider = Book.create("Sister Outsider", "Audre Lorde", "9781515905431")
-puts sister_outsider.inspect
-puts "Here is what is currently in stock: #{Book.available.inspect}"
+aint_i = Book.create("Ain't I a Woman?", "Bell Hooks", "9780896081307")
+if_they_come = Book.create("If They Come in the Morning", "Angela Y. Davis", "0893880221")
+
+# puts sister_outsider.inspect
+# puts "Here is what is currently in stock: #{Book.available.inspect}"
+puts Book.browse.inspect
+puts Book.browse.inspect
+puts Book.browse.inspect
+ puts Book.available.inspect
