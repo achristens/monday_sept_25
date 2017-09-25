@@ -1,5 +1,4 @@
 class BankAccount
-  # The interest_rate class variable should be a float
   @@interest_rate = 1.01
   @@accounts      = []
 
@@ -11,10 +10,8 @@ class BankAccount
     @balance
   end
 
-  # The below may have to use a += or -= to update the balance
   def change_balance(value)
     @balance = value
-    # "Your new balance is $#{@balance}"
   end
 
   def deposit(amount)
@@ -72,5 +69,5 @@ puts my_account.balance
 puts your_account.balance
 my_account.withdraw(50)
 puts my_account.balance
-puts BankAccount.total_funds  
-# puts "All Accounts: #{BankAccount.list_accounts.class}"
+puts BankAccount.total_funds
+puts "All Accounts: #{BankAccount.list_accounts.class}"
