@@ -4,11 +4,11 @@ class BankAccount
   @@accounts = []
 
   def initialize
-    @balance = 0
+    @balance = 0.0
   end
 
   def balance
-    "$#{@balance}"
+    @balance
   end
 
   # The below may have to use a += or -= to update the balance
@@ -33,6 +33,18 @@ class BankAccount
     new_account
   end
 
+  def self.total_funds
+    sum = 0
+    balances = @@accounts.map(&:balance)
+    balances.each do |number|
+      sum += number
+    end
+    return sum
+  end
+
+  def self.interest_time
+  end
+  
   def self.list_accounts
     return @@accounts
   end
@@ -43,9 +55,11 @@ my_account = BankAccount.create
 your_account = BankAccount.create
 
 puts my_account.balance
-# should return total amount in all accounts
-# puts BankAccount.total_funds
+puts BankAccount.total_funds
+
 puts my_account.deposit(200)
 puts your_account.deposit(1000)
-# below should return 1
+puts my_account.balance
+puts your_account.balance
 puts BankAccount.total_funds
+# puts "All Accounts: #{BankAccount.list_accounts.class}"
