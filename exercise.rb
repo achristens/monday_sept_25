@@ -37,6 +37,15 @@ project = {
     }
   ]
 }
+names = 0
+
+puts project[:steps].each {
+  |k, v| k[:person] = project[:committee][names]
+  names += 1
+  if names > 2
+    names = 0
+  end
+}
 
 # # To access names:
 # puts project[:committee]
@@ -45,4 +54,6 @@ project = {
 # puts project[:steps]
 
 # Add new hash to each step:
-puts project[:steps].each {|h| h[:name]="name"}
+# puts project[:steps].each {|k, v| k[:person]=" "}
+
+# Populating with other hash contents
