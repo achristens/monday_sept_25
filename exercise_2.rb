@@ -26,11 +26,26 @@ class BankAccount
     @balance -= amount
     "Your new balance is $#{@balance}"
   end
+
+  def self.create
+    new_account = BankAccount.new
+    @@accounts << new_account
+    new_account
+  end
+
+  def self.list_accounts
+    return @@accounts
+  end
+
 end
 
-account_1 = BankAccount.new
+my_account = BankAccount.create
+your_account = BankAccount.create
 
-puts account_1.change_balance(100)
-puts account_1.deposit(15)
-puts account_1.withdraw(30)
-puts account_1.balance
+puts my_account.balance
+# should return total amount in all accounts
+# puts BankAccount.total_funds
+puts my_account.deposit(200)
+puts your_account.deposit(1000)
+# below should return 1
+puts BankAccount.total_funds
