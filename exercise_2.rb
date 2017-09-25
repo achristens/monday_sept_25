@@ -72,5 +72,5 @@ puts my_account.balance
 puts your_account.balance
 my_account.withdraw(50)
 puts my_account.balance
-puts BankAccount.total_funds
+puts BankAccount.total_funds  
 # puts "All Accounts: #{BankAccount.list_accounts.class}"
