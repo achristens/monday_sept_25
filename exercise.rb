@@ -1,7 +1,14 @@
+#   Update this hash so that each step has the name of a
+#   committee member associated with it (i.e. by adding an
+#   additional person key in each step hash), and each
+#   committee member has an equal number of tasks. Avoid
+#   typing out the committee members' names elsewhere in your
+#   code.
+
 project = {
   committee: ["Stella", "Salma", "Kai"],
   title: "Very Important Project",
-  due_date : "December 1, 2019",
+  due_date: "December 1, 2019",
   id: "3284",
   steps: [
     {description: "conduct interviews",
@@ -30,3 +37,12 @@ project = {
     }
   ]
 }
+
+# # To access names:
+# puts project[:committee]
+#
+# # To access steps:
+# puts project[:steps]
+
+# Add new hash to each step:
+puts project[:steps].each {|h| h[:name]="name"}
