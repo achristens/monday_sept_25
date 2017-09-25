@@ -14,5 +14,16 @@ class BankAccount
   # The below may have to use a += or -= to update the balance
   def change_balance(value)
     @balance = value
+    "Your new balance is $#{@balance}"
+  end
+
+  def deposit(amount)
+    @balance += amount
+    "Your new balance is $#{@balance}"
   end
 end
+
+account_1 = BankAccount.new
+
+puts account_1.change_balance(100)
+puts account_1.deposit(15)
