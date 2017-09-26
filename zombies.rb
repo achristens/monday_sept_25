@@ -10,8 +10,20 @@ class Zombie
   @@default_strength = 3
 
   # INSTANCE METHODS
-  def @initialize
-
+  def initialize(speed, strength)
+    if speed > @@max_speed && strength > @@max_strength
+      @speed    = @@default_speed
+      @strength = @@default_strength
+    elsif speed > @@max_speed && strength <= @@max_strength
+      @speed    = @@default_speed
+      @strength = strength
+    elsif speed <= @@max_speed && strength > @@max_strength
+      @speed = speed
+      @strength = @@default_strength
+    elsif speed <= @@max_speed && strength <= @@max_strength
+        @speed    = speed
+        @strength = strength
+    end
   end
 
   def encounter
@@ -47,3 +59,6 @@ class Zombie
 
   end
 end
+
+zombie_1 = Zombie.new(7, 10)
+puts zombie_1.inspect
