@@ -36,6 +36,11 @@ class ShoppingCart
     end
     return each_total
   end
+
+  def self.remove_product
+    @@all_products.delete_at(0)
+  end
+
 end
 
 my_cart = ShoppingCart.new
@@ -43,6 +48,8 @@ kale = ShoppingCart.add_product
 berries = ShoppingCart.add_product
 
 puts kale.product_total
+puts ShoppingCart.remove_product
+puts ShoppingCart.all.inspect
 # puts ShoppingCart.cart_subtotal.inspect
 # puts ShoppingCart.all.inspect
 # puts ShoppingCart.cart_with_tax
