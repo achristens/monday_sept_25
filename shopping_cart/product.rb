@@ -22,6 +22,10 @@ class Product
   def total_price
     (@price * @tax_rate).round(2)
   end
+
+  def product_total
+    self.total_price
+  end
 end
 
 # blender = Product.new('Blender', 100)

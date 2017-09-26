@@ -1,16 +1,10 @@
 require './product.rb'
 require 'pry'
-#  to calculate the products total price
-# Shopping cart should be able to add a product to the cart
 #  and remove a prodcut from the cart
 
 class ShoppingCart
   # CLASS VARIABLES
   @@all_products = []
-
-  def product_total
-    return self.total_price
-  end
 
   # CLASS METHODS
   def self.add_product
@@ -46,6 +40,7 @@ end
 
 my_cart = ShoppingCart.new
 kale = ShoppingCart.add_product
+berries = ShoppingCart.add_product
 
 puts kale.product_total
 # puts ShoppingCart.cart_subtotal.inspect
