@@ -10,6 +10,16 @@ class Vampire
     @in_coffin          = true
     @drank_blood_today  = false
   end
+  # drink_blood, which sets a vampire's drank_blood_today boolean to true
+
+  def drink_blood
+    @drank_blood_today = true
+  end
+
+  # READERS
+  def drank_blood_today
+    @drank_blood_today
+  end
 
   # CLASS METHODS
   def self.create(name)
@@ -18,7 +28,6 @@ class Vampire
     return new_vampire
   end
 
-  # drink_blood, which sets a vampire's drank_blood_today boolean to true
   # sunrise, which removes from the coven any vampires who are out of their coffins or who haven't drank any blood in the last day
   # sunset, which sets drank_blood_today and in_coffin to false for the entire coven as they go out in search of blood
   # go_home, which sets a vampire's in_coffin boolean to true
@@ -27,4 +36,4 @@ class Vampire
 end
 
 vampire_1 = Vampire.create("Dracula")
-puts vampire_1.inspect
+puts vampire_1.drink_blood
