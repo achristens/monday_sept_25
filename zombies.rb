@@ -12,18 +12,19 @@ class Zombie
   # INSTANCE METHODS
   def initialize(speed, strength)
     if speed > @@max_speed && strength > @@max_strength
-      @speed    = @@default_speed
-      @strength = @@default_strength
+      @speed      = @@default_speed
+      @strength   = @@default_strength
     elsif speed > @@max_speed && strength <= @@max_strength
-      @speed    = @@default_speed
-      @strength = strength
+      @speed      = @@default_speed
+      @strength   = strength
     elsif speed <= @@max_speed && strength > @@max_strength
-      @speed = speed
-      @strength = @@default_strength
+      @speed      = speed
+      @strength   = @@default_strength
     elsif speed <= @@max_speed && strength <= @@max_strength
         @speed    = speed
         @strength = strength
     end
+    puts "Zombie Stats: Speed=#{@speed}, Strength=#{@strength}"
   end
 
   def encounter
@@ -38,9 +39,18 @@ class Zombie
 
   end
 
+  # READERS
+  def strength
+    @strength
+  end
+
+  def speed
+    @speed
+  end
+
   # CLASS METHODS
   def self.all
-
+    return @@horde
   end
 
   def self.new_day
@@ -52,13 +62,17 @@ class Zombie
   end
 
   def self.spawn
-
+    spawn_number = rand(@@plague_level + 1)
+    new_zombies  = spawn_number.times {Zombie.new(rand(@@max_speed + 1),rand(@@max_strength + 1))}
+    @@horde << new_zombies
+    return new_zombies
   end
 
   def self.increase_plague_level
 
   end
 end
-
-zombie_1 = Zombie.new(7, 10)
-puts zombie_1.inspect
+#
+# zombie_1 = Zombie.new(7, 10)
+# puts zombie_1.inspect
+puts Zombie.spawn
