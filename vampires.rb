@@ -7,8 +7,8 @@ class Vampire
   def initialize(name)
     @name               = name
     @age                = rand(100..3000)
-    @in_coffin          = true
-    @drank_blood_today  = false
+    @in_coffin          = [true, false].sample
+    @drank_blood_today  = [true, false].sample
   end
 
   def drink_blood
@@ -18,6 +18,13 @@ class Vampire
   def go_home
     @in_coffin = true
   end
+
+  def sunrise
+    if self.in_coffin == false || self.drank_blood_today == false
+      @@coven.delete(self)
+    end
+  end
+
 
   # READERS
   def drank_blood_today
@@ -34,14 +41,21 @@ class Vampire
     @@coven << new_vampire
     return new_vampire
   end
-
-  # sunrise, which removes from the coven any vampires who are out of their coffins or who haven't drank any blood in the last day
   # sunset, which sets drank_blood_today and in_coffin to false for the entire coven as they go out in search of blood
 
+  def self.all
+    return @@coven
+  end
   # Every day at sunset the vampires leave their coffins in search of blood. If they don't drink blood and get back to their coffins before sunrise, they die.
 end
 
 vampire_1 = Vampire.create("Dracula")
-puts vampire_1.inspect
-puts vampire_1.go_home
-puts vampire_1.inspect
+vampire_2 = Vampire.create("Mo")
+vampire_3 = Vampire.create("Larry")
+vampire_4 = Vampire.create("Harry")
+puts Vampire.all.inspect
+puts vampire_1.sunrise
+puts Vampire.all.inspect
+#
+#
+# puts vampire_1.inspect
