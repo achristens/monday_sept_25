@@ -1,3 +1,4 @@
+require 'pry'
 class Vampire
   # CLASS VARIABLES
   @@coven = []
@@ -25,6 +26,14 @@ class Vampire
     end
   end
 
+  # WRITERS
+  def in_coffin=(in_coffin)
+    @in_coffin = in_coffin
+  end
+
+  def drank_blood_today=(drank_blood_today)
+    @drank_blood_today = drank_blood_today
+  end
 
   # READERS
   def drank_blood_today
@@ -41,7 +50,15 @@ class Vampire
     @@coven << new_vampire
     return new_vampire
   end
-  # sunset, which sets drank_blood_today and in_coffin to false for the entire coven as they go out in search of blood
+
+  def self.sunset
+    @@coven.each do |vampire|
+      vampire.in_coffin         = false
+      vampire.drank_blood_today = false
+    end
+
+    @@coven
+  end
 
   def self.all
     return @@coven
@@ -52,9 +69,11 @@ end
 vampire_1 = Vampire.create("Dracula")
 vampire_2 = Vampire.create("Mo")
 vampire_3 = Vampire.create("Larry")
-vampire_4 = Vampire.create("Harry")
+# vampire_4 = Vampire.create("Harry")
 puts Vampire.all.inspect
-puts vampire_1.sunrise
+# puts vampire_1.sunrise
+# puts Vampire.all.inspect
+puts Vampire.sunset
 puts Vampire.all.inspect
 #
 #
